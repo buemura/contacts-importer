@@ -1,7 +1,14 @@
-FROM rabbitmq:3.9.6-management-alpine
+FROM rabbitmq:3.11.11-management-alpine
 
-# Enable the RabbitMQ Management plugin
-RUN rabbitmq-plugins enable --offline rabbitmq_management
+COPY rabbitmq.conf /etc/rabbitmq
+COPY definitions.json /etc/rabbitmq
 
-# Expose the RabbitMQ Management UI on port 15672
-EXPOSE 15672
+RUN cat /etc/rabbitmq/rabbitmq.conf
+
+# FROM rabbitmq:3.11.11-management-alpine
+
+# # Enable the RabbitMQ Management plugin
+# RUN rabbitmq-plugins enable --offline rabbitmq_management
+
+# # Expose the RabbitMQ Management UI on port 15672
+# EXPOSE 15672

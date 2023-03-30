@@ -5,12 +5,21 @@ import {
 import { RabbitMQServer } from "./server";
 
 export class RabbitMQProducer implements EventProducer {
-  constructor(private readonly broker: RabbitMQServer) {}
+  private readonly broker: RabbitMQServer;
+
+  constructor() {
+    this.broker = new RabbitMQServer(
+      process.env.RABBITMQ_BROKER_URL ?? "amqp://localhost:5672"
+    );
+  }
 
   async produce({ queue, message }: EventProps): Promise<void> {
     await this.broker.connect();
-    await this.broker.sendMessage(queue, JSON.stringify(message));
+    await this.broker.publishInQueue(queue, JSON.stringify(message));
+
     console.log("[RabbitMQ]: Successfully produced message");
     console.log(message);
+
+    await this.broker.close();
   }
 }

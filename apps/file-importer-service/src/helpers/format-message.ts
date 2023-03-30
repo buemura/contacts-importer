@@ -1,5 +1,4 @@
 interface MessageProps {
-  eventType: string;
   data: any;
 }
 

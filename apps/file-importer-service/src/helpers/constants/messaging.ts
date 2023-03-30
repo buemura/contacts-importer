@@ -1,6 +1,6 @@
 export const QUEUES = {
-  CONTACTS_IMPORTER_FILE: "contacts.importer.file",
-  CONTACTS_IMPORTER_CONTACT: "contacts.importer.contact",
+  CONTACTS_FILE_NEW: "contacts.file.new",
+  CONTACTS_FILE_UPDATE: "contacts.file.update",
 };
 
 export const EVENT_TYPES = {

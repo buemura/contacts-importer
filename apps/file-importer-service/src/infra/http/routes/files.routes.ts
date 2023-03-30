@@ -5,10 +5,10 @@ import { GetFilesUsecase } from "../../../application/usecases/get-files-usecase
 import { NewFileImportUsecase } from "../../../application/usecases/new-file-import-usecase";
 import { uploadConfig } from "../../../config/multer";
 import { PrismaFileRepository } from "../../database/prisma/file-repository";
-import { InMemoryEventProducer } from "../../messaging/in-memory/producer";
+import { RabbitMQProducer } from "../../messaging";
 import { FilesController } from "../controllers/files-controller";
 
-const eventProducer = new InMemoryEventProducer();
+const eventProducer = new RabbitMQProducer();
 const fileRepository = new PrismaFileRepository();
 const getFilesUsecase = new GetFilesUsecase(fileRepository);
 const newFileImportUsecase = new NewFileImportUsecase(
