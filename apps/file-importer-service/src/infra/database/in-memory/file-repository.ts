@@ -8,8 +8,13 @@ export class InMemoryFileRepository implements FileRepository {
     return this.files;
   }
 
-  async findById(id: string): Promise<File | undefined> {
-    return this.files.find((file) => file.id === id);
+  async findById(id: string): Promise<File | null> {
+    const file = this.files.find((file) => file.id === id);
+    if (!file) {
+      return null;
+    }
+
+    return file;
   }
 
   async create(file: File): Promise<File> {
