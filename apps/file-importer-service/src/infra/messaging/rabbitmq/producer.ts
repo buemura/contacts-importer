@@ -1,11 +1,13 @@
-import { RabbitMQServer } from ".";
+import {
+  EventProducer,
+  EventProps,
+} from "../../../application/event/event-producer";
+import { RabbitMQServer } from "./server";
 
-export class RabbitMQProducer {
-  private broker = new RabbitMQServer(
-    process.env.RABBITMQ_URL || "amqp://localhost"
-  );
+export class RabbitMQProducer implements EventProducer {
+  constructor(private readonly broker: RabbitMQServer) {}
 
-  async sendMessage(queue: string, message: any) {
+  async produce({ queue, message }: EventProps): Promise<void> {
     await this.broker.connect();
     await this.broker.sendMessage(queue, JSON.stringify(message));
     console.log("[RabbitMQ]: Successfully produced message");
