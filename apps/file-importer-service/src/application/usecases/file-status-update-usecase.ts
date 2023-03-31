@@ -16,7 +16,6 @@ export class FileStatusUpdateUsecase {
     }
 
     console.log(`Updating file ${fileId} to status ${status}`);
-    file.updateStatus(status);
     await this.fileRepository.update(fileId, status);
     console.log(`Successfully updated file ${fileId}`);
   }

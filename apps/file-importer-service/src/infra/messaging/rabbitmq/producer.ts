@@ -15,7 +15,7 @@ export class RabbitMQProducer implements EventProducer {
 
   async produce({ queue, message }: EventProps): Promise<void> {
     await this.broker.connect();
-    await this.broker.publishInQueue(queue, JSON.stringify(message));
+    await this.broker.publishInQueue(queue, message);
 
     console.log("[RabbitMQ]: Successfully produced message");
     console.log(message);

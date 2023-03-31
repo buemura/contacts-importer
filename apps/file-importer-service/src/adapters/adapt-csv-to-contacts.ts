@@ -7,6 +7,8 @@ interface JsonFromCSV {
   address: string;
   company: string;
   job_title: string;
+  credit_card_number: string;
+  date_of_birth: string;
 }
 
 export function adaptCsvToContacts(data: JsonFromCSV[]): Contact[] {
@@ -17,5 +19,7 @@ export function adaptCsvToContacts(data: JsonFromCSV[]): Contact[] {
     address: contact.address,
     company: contact.company,
     jobTitle: contact.job_title,
+    creditCardNumber: contact.credit_card_number,
+    dateOfBirth: contact.date_of_birth,
   }));
 }

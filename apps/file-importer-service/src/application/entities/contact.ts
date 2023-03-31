@@ -5,4 +5,6 @@ export class Contact {
   address: string;
   company: string;
   jobTitle: string;
+  creditCardNumber: string;
+  dateOfBirth: string;
 }

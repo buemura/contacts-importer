@@ -19,7 +19,8 @@ export class NewFileImportUsecase {
     const contacts = adaptCsvToContacts(rawJsonData);
 
     const dataToSend = {
-      ...file,
+      fileId: file.id,
+      fileStatus: file.status,
       content: contacts,
     };
 

@@ -10,8 +10,8 @@ export class MessagingService {
     switch (queue) {
       case QUEUES.CONTACTS_FILE_UPDATE:
         await this.fileStatusUpdateUsecase.execute({
-          fileId: message.fileId,
-          status: message.status,
+          fileId: message.data.fileId,
+          status: message.data.status,
         });
         break;
       default:

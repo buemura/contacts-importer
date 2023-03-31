@@ -11,3 +11,15 @@ services:
       - "15672:15672"
     volumes:
       - "./data/rabbitmq_data:/var/lib/rabbitmq/mnesia"
+
+  contacts_postgres:
+    image: postgres:latest
+    container_name: contacts_postgres
+    environment:
+      POSTGRES_PASSWORD: admin
+      POSTGRES_USER: admin
+      POSTGRES_DB: contacts_service
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data/pgdata:/var/lib/postgresql/data
