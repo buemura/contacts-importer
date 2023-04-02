@@ -1,4 +1,4 @@
 import "dotenv/config";
-import { bootstrap } from "./infra/http/configs/server";
+import { bootstrap } from "./infra/http/server";
 
 bootstrap();

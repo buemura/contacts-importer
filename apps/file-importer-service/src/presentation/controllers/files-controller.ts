@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import { GetFilesUsecase } from "../../../application/usecases/get-files-usecase";
-import { NewFileImportUsecase } from "../../../application/usecases/new-file-import-usecase";
-import { AppError } from "../../../helpers/errors/app-error";
-import { ERROR_MESSAGE } from "../../../helpers/errors/messages";
+import { GetFilesUsecase } from "../../application/usecases/get-files-usecase";
+import { NewFileImportUsecase } from "../../application/usecases/new-file-import-usecase";
+import { AppError } from "../../helpers/errors/app-error";
+import { ERROR_MESSAGE } from "../../helpers/errors/messages";
 
 export class FilesController {
   constructor(
