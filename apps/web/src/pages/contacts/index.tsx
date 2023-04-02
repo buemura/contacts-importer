@@ -1,22 +1,20 @@
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { ContactsError } from "../../components/Contacts/ContactsError";
-import { ContactsSuccess } from "../../components/Contacts/ContactsSuccess";
+import { Contacts } from "../../components/Contacts/Contacts";
 import { Layout } from "../../components/Layout";
 
 export function ContactsPage() {
-  const navigate = useNavigate();
-  useEffect(() => {
-    if (!localStorage.getItem("u") || localStorage.getItem("u") === null) {
-      navigate("/auth/login");
-    }
-  }, []);
+  // const navigate = useNavigate();
+  // const { isAuthenticated } = useCheckAuth();
+
+  // if (!isAuthenticated) {
+  //   navigate("/auth/login");
+  // }
 
   return (
     <Layout>
       <div className="p-20 flex flex-col gap-10">
-        <ContactsSuccess />
-        <ContactsError />
+        <Contacts />
+        {/* <ContactsSuccess />
+        <ContactsError /> */}
       </div>
     </Layout>
   );

@@ -1,6 +1,7 @@
 import { Request, Response, Router } from "express";
 
 import { appRouters } from "./app.routes";
+import { contactsRouters } from "./contacts.routes";
 
 const routers = Router();
 
@@ -10,6 +11,6 @@ routers.get("/api/health", (_request: Request, response: Response) => {
   });
 });
 
-routers.use("/api", appRouters);
+routers.use("/api", appRouters, contactsRouters);
 
 export { routers };

@@ -1,14 +1,25 @@
-import { api } from "./api";
+import axios from "axios";
+import { BASE_URL } from "../configs/env";
 
 type ContactsProps = {
   userId: string;
   accessToken: string;
 };
 
+async function getContacts() {
+  try {
+    const url = `${BASE_URL.CONTACT_API}/contacts`;
+    const { data: response } = await axios.get(url);
+    return response;
+  } catch (error) {
+    return null;
+  }
+}
+
 async function getContactsSuccess({ userId, accessToken }: ContactsProps) {
   try {
-    const url = `/users/${userId}/contacts/success`;
-    const { data: response } = await api.get(url, {
+    const url = `${BASE_URL.CONTACT_API}/contacts`;
+    const { data: response } = await axios.get(url, {
       headers: { Authorization: `Bearer ${accessToken}` },
     });
     return response?.successContacts;
@@ -19,8 +30,8 @@ async function getContactsSuccess({ userId, accessToken }: ContactsProps) {
 
 async function getContactsError({ userId, accessToken }: ContactsProps) {
   try {
-    const url = `/users/${userId}/contacts/error`;
-    const { data: response } = await api.get(url, {
+    const url = `${BASE_URL.CONTACT_API}/contacts`;
+    const { data: response } = await axios.get(url, {
       headers: { Authorization: `Bearer ${accessToken}` },
     });
     return response?.errorContacts;
@@ -30,6 +41,7 @@ async function getContactsError({ userId, accessToken }: ContactsProps) {
 }
 
 export const contactsService = {
+  getContacts,
   getContactsSuccess,
   getContactsError,
 };

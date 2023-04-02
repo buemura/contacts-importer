@@ -1,16 +1,14 @@
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { FileUpload } from "../../components/FileUpload";
 import ImportStatus from "../../components/ImportStatus";
 import { Layout } from "../../components/Layout";
 
 export function ImportPage() {
-  const navigate = useNavigate();
-  useEffect(() => {
-    if (!localStorage.getItem("u") || localStorage.getItem("u") === null) {
-      navigate("/auth/login");
-    }
-  }, []);
+  // const navigate = useNavigate();
+  // const { isAuthenticated } = useCheckAuth();
+
+  // if (!isAuthenticated) {
+  //   navigate("/auth/login");
+  // }
 
   return (
     <Layout>

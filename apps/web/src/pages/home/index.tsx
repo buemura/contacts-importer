@@ -1,15 +1,12 @@
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { Layout } from "../../components/Layout";
 
 export function HomePage() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
+  // const { isAuthenticated } = useCheckAuth();
 
-  useEffect(() => {
-    if (!localStorage.getItem("u") || localStorage.getItem("u") === null) {
-      navigate("/auth/login");
-    }
-  }, []);
+  // if (!isAuthenticated) {
+  //   navigate("/auth/login");
+  // }
 
   return (
     <Layout>

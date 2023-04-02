@@ -4,9 +4,8 @@ import { filesService } from "../../services/filesService";
 
 export function FileUpload() {
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
-
-  const userData = JSON.parse(localStorage.getItem("u") || "");
 
   const handleFileChange = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -28,16 +27,18 @@ export function FileUpload() {
       const formData = new FormData();
       formData.append("file", selectedFile);
 
+      setIsLoading(true);
       const result = await filesService.upload({
-        userId: userData._id,
+        userId: "",
         file: formData,
-        accessToken: userData.accessToken,
+        accessToken: "",
       });
       if (!result) {
         navigate("/auth/login");
       }
+      setIsLoading(false);
 
-      // location.reload();
+      location.reload();
     } else {
       alert("Please select a file to upload.");
     }
@@ -58,8 +59,9 @@ export function FileUpload() {
       <button
         className="bg-blue-600 text-white px-2 py-1 rounded-sm"
         type="submit"
+        disabled={isLoading}
       >
-        Send
+        {isLoading ? "Loading..." : "Send"}
       </button>
     </form>
   );

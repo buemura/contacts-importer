@@ -1,20 +1,24 @@
 import { useEffect, useState } from "react";
 import { filesService } from "../../services/filesService";
+import { File } from "../../types/file";
 
 export default function ImportStatus() {
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
-  const [importedFiles, setImportedFiles] = useState([]);
+  const [importedFiles, setImportedFiles] = useState<File[]>([]);
 
-  const userData = JSON.parse(localStorage.getItem("u") || "");
+  // const userData = JSON.parse(localStorage.getItem("u") || "");
 
   const fetchImportStatus = async () => {
     try {
       setIsLoading(true);
-      const result = await filesService.getFiles({
-        userId: userData._id,
-        accessToken: userData.accessToken,
-      });
+      // const result = await filesService.getFiles({
+      //   userId: userData._id,
+      //   accessToken: userData.accessToken,
+      // });
+      const result = await filesService.getFiles();
+      console.log(result);
+
       setIsLoading(false);
       setImportedFiles(result);
     } catch (error) {
@@ -47,7 +51,7 @@ export default function ImportStatus() {
 
           <tbody className="overflow-x-scroll">
             {importedFiles?.map((file) => (
-              <tr key={file._id}>
+              <tr key={file.id}>
                 <td className="border bg-white pl-1">{file.name}</td>
                 <td className="border bg-white pl-1">{file.status}</td>
               </tr>

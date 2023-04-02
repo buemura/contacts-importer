@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { contactsService } from "../../services/contactsService";
+import { Contact } from "../../types/contact";
 
 export function ContactsSuccess() {
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
-  const [contactsSuccess, setContactsSuccess] = useState([]);
+  const [contactsSuccess, setContactsSuccess] = useState<Contact[]>([]);
 
   const userData = JSON.parse(localStorage.getItem("u") || "");
 
@@ -68,18 +69,17 @@ export function ContactsSuccess() {
 
             <tbody className="overflow-y-scroll overflow-x-scroll">
               {contactsSuccess?.map((contact) => (
-                <tr key={contact._id}>
+                <tr key={contact.id}>
                   <td className="border bg-white pl-1">{contact.name}</td>
                   <td className="border bg-white pl-1">
                     {contact.dateOfBirth}
                   </td>
-                  <td className="border bg-white pl-1">{contact.phone}</td>
+                  <td className="border bg-white pl-1">
+                    {contact.phoneNumber}
+                  </td>
                   <td className="border bg-white pl-1">{contact.address}</td>
                   <td className="border bg-white pl-1">
                     {contact.creditCardNumber}
-                  </td>
-                  <td className="border bg-white pl-1">
-                    {contact.creditCardNetwork}
                   </td>
                   <td className="border bg-white pl-1">{contact.email}</td>
                 </tr>
