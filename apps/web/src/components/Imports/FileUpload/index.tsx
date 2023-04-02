@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { filesService } from "../../services/filesService";
+import { filesService } from "../../../services/filesService";
 
 export function FileUpload() {
   const navigate = useNavigate();

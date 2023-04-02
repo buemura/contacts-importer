@@ -1,4 +1,4 @@
-import { Contact } from "src/application/entities/contact";
+import { Contact } from "../application/entities/contact";
 
 interface JsonFromCSV {
   name: string;

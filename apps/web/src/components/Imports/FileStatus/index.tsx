@@ -1,24 +1,16 @@
 import { useEffect, useState } from "react";
-import { filesService } from "../../services/filesService";
-import { File } from "../../types/file";
+import { filesService } from "../../../services/filesService";
+import { File } from "../../../types/file";
 
-export default function ImportStatus() {
+export default function FileStatus() {
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [importedFiles, setImportedFiles] = useState<File[]>([]);
 
-  // const userData = JSON.parse(localStorage.getItem("u") || "");
-
   const fetchImportStatus = async () => {
     try {
       setIsLoading(true);
-      // const result = await filesService.getFiles({
-      //   userId: userData._id,
-      //   accessToken: userData.accessToken,
-      // });
       const result = await filesService.getFiles();
-      console.log(result);
-
       setIsLoading(false);
       setImportedFiles(result);
     } catch (error) {

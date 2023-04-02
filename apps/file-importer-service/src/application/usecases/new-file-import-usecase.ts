@@ -1,7 +1,7 @@
 import { adaptCsvToContacts } from "../../adapters/adapt-csv-to-contacts";
 import { QUEUES } from "../../helpers/constants/messaging";
 import { formatMessage } from "../../helpers/format-message";
-import { CsvToJson } from "../../providers/csv-to-json";
+import { CsvToJson } from "../../infra/providers/csv-to-json";
 import { NewFileDto } from "../dtos/new-file-dto";
 import { EventProducer } from "../event/event-producer";
 import { FileRepository } from "../repositories/file-repository";
