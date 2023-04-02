@@ -1,3 +1,4 @@
+import { webSocket } from "../../infra/http/configs/server-socket";
 import { FileRepository } from "../repositories/file-repository";
 
 interface FileStatusUpdateProps {
@@ -18,5 +19,11 @@ export class FileStatusUpdateUsecase {
     console.log(`Updating file ${fileId} to status ${status}`);
     await this.fileRepository.update(fileId, status);
     console.log(`Successfully updated file ${fileId}`);
+
+    // refactor this
+    webSocket.emit("newMessage", {
+      id: file.id,
+      status: file.status,
+    });
   }
 }

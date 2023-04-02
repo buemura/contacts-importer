@@ -25,7 +25,7 @@ export function Contacts() {
 
   return (
     <div>
-      <h1 className="text-lg">Error Contacts</h1>
+      <h1 className="text-lg">All Contacts</h1>
       {isLoading && <span>Loading...</span>}
       {hasError && (
         <span>Failed to fetch contacts with error. Try again later</span>

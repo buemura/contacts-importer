@@ -19,8 +19,6 @@ async function getFiles() {
     //   headers: { Authorization: `Bearer ${accessToken}` },
     // });
     const { data: response } = await axios.get(`${BASE_URL.FILE_API}/files`);
-    console.log(response);
-
     return response;
   } catch (error) {
     return null;
