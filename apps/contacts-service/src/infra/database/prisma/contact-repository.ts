@@ -1,7 +1,7 @@
 import { PrismaClient } from "@prisma/client";
-import { NewContactDto } from "src/application/dtos/new-contact-dto";
-import { Contact } from "src/application/entities/contact";
-import { ContactRepository } from "src/application/repositories/contact-repository";
+import { NewContactDto } from "../../../application/dtos/new-contact-dto";
+import { Contact } from "../../../application/entities/contact";
+import { ContactRepository } from "../../../application/repositories/contact-repository";
 
 export class PrismaContactRepository implements ContactRepository {
   private readonly prismaClient: PrismaClient;

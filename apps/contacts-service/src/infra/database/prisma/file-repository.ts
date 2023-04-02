@@ -1,5 +1,8 @@
 import { PrismaClient } from "@prisma/client";
-import { NewFileDto, UpdateFileDto } from "src/application/dtos/new-file-dto";
+import {
+  NewFileDto,
+  UpdateFileDto,
+} from "../../../application/dtos/new-file-dto";
 import { File } from "../../../application/entities/file";
 import { FileRepository } from "../../../application/repositories/file-repository";
 

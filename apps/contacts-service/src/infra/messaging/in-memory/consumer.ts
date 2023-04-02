@@ -1,4 +1,4 @@
-import { EventConsumer } from "src/application/event/event-consumer";
+import { EventConsumer } from "../../../application/event/event-consumer";
 
 export class InMemoryEventConsumer implements EventConsumer {
   async consume(): Promise<void> {
