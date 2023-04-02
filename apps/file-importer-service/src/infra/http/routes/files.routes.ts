@@ -3,9 +3,9 @@ import multer from "multer";
 
 import { GetFilesUsecase } from "../../../application/usecases/get-files-usecase";
 import { NewFileImportUsecase } from "../../../application/usecases/new-file-import-usecase";
-import { uploadConfig } from "../../../config/multer";
 import { PrismaFileRepository } from "../../database/prisma/file-repository";
 import { RabbitMQProducer } from "../../messaging";
+import { uploadConfig } from "../../multer/config";
 import { FilesController } from "../controllers/files-controller";
 
 const eventProducer = new RabbitMQProducer();
