@@ -1,0 +1,25 @@
+{
+  "name": "contacts-importer",
+  "version": "1.0.0",
+  "description": "contacts-importer",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "env:up": "docker-compose build && docker-compose up -d",
+    "env:down": "sh scripts/infra_down.sh",
+    "migrate": "sh scripts/migrate.sh",
+    "build": "turbo run build",
+    "start:dev": "turbo run start:dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "turbo": "^1.10.13"
+  },
+  "workspaces": [
+    "apps/*"
+  ]
+}

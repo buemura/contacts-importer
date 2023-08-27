@@ -1,0 +1,38 @@
+version: "3.8"
+
+services:
+  rabbitmq:
+    image: rabbitmq:3.8-management
+    ports:
+      - 5672:5672
+      - 15672:15672
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+      RABBITMQ_DEFAULT_VHOST: /
+    volumes:
+      - "./data/rabbitmq_data:/var/lib/rabbitmq/mnesia"
+
+  file_postgres:
+    image: postgres:latest
+    container_name: file_postgres
+    environment:
+      POSTGRES_PASSWORD: admin
+      POSTGRES_USER: admin
+      POSTGRES_DB: file_service
+    ports:
+      - "15432:5432"
+    volumes:
+      - ./data/file_pgdata:/var/lib/postgresql/data
+
+  contacts_postgres:
+    image: postgres:latest
+    container_name: contacts_postgres
+    environment:
+      POSTGRES_PASSWORD: admin
+      POSTGRES_USER: admin
+      POSTGRES_DB: contacts_service
+    ports:
+      - "25432:5432"
+    volumes:
+      - ./data/contact_pgdata:/var/lib/postgresql/data

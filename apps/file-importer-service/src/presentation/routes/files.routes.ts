@@ -31,7 +31,7 @@ routers.post(
   "/files",
   upload.single("file"),
   (request: Request, response: Response) => {
-    return filesController.newFile(request, response);
+    return filesController.uploadFile(request, response);
   }
 );
 

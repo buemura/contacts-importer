@@ -21,7 +21,7 @@ export class FilesController {
     }
   }
 
-  async newFile(request: Request, reply: Response) {
+  async uploadFile(request: Request, reply: Response) {
     const { file } = request;
 
     try {

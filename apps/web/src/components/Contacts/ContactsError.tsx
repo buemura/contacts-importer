@@ -36,7 +36,7 @@ export function ContactsError() {
         <span>Failed to fetch contacts with error. Try again later</span>
       )}
 
-      {contactsError.length > 0 && (
+      {contactsError?.length > 0 && (
         <div className="h-80 overflow-y-scroll overflow-x-scroll">
           <table className="w-full table-auto text-sm">
             <thead className="bg-neutral-300">
